@@ -10,9 +10,10 @@ import UIKit
 class MainViewController: UITableViewController {
     
     let restaurantNames = [
-        "McDonalds", "Cloud Nine", "Moon Light",
-        "Ali's", "Burger King", "Slaelong",
-        "Babylon", "Irish Pub", "KFC"
+        "Burger Heroes", "Kitchen", "Bonsai", "Дастархан",
+        "Индокитай", "X.O", "Балкан Гриль", "Sherlock Holmes",
+        "Speak Easy", "Morris Pub", "Вкусные истории",
+        "Классик", "Love&Life", "Шок", "Бочка"
     ]
     
     override func viewDidLoad() {
@@ -31,6 +32,7 @@ class MainViewController: UITableViewController {
         var content = cell.defaultContentConfiguration()
         
         content.text = restaurantName
+//        content.image
         cell.contentConfiguration = content
         
         return cell
