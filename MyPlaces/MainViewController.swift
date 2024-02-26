@@ -27,14 +27,13 @@ class MainViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         let restaurantName = restaurantNames[indexPath.row]
-        var content = cell.defaultContentConfiguration()
         
-        content.text = restaurantName
-        content.image = UIImage(named: restaurantNames[indexPath.row])
-        content.imageProperties.cornerRadius = cell.frame.size.height / 2
-        cell.contentConfiguration = content
+        cell.nameLabel.text = restaurantNames[indexPath.row]
+        cell.imageOfPlace.image  = UIImage(named: restaurantNames[indexPath.row])
+        cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
+        cell.imageOfPlace.clipsToBounds = true
         
         return cell
     }
