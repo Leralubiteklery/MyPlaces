@@ -23,7 +23,7 @@ class MainViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-        let restaurantName = places[indexPath.row].name
+//        let restaurantName = places[indexPath.row].name
         
         cell.nameLabel.text = places[indexPath.row].name
         cell.locationLabel.text = places[indexPath.row].location
