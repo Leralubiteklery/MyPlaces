@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED1459362BA04D81009CEFAE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = ED1459352BA04D81009CEFAE /* Realm */; };
+		ED1459382BA04D81009CEFAE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ED1459372BA04D81009CEFAE /* RealmSwift */; };
+		ED14593A2BA05736009CEFAE /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1459392BA05736009CEFAE /* StorageManager.swift */; };
 		ED7DE4E22B70D89E0016F523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7DE4E12B70D89E0016F523 /* AppDelegate.swift */; };
 		ED7DE4E42B70D89E0016F523 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7DE4E32B70D89E0016F523 /* SceneDelegate.swift */; };
 		ED7DE4E92B70D89E0016F523 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7DE4E72B70D89E0016F523 /* Main.storyboard */; };
@@ -19,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED1459392BA05736009CEFAE /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		ED7DE4DE2B70D89E0016F523 /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7DE4E12B70D89E0016F523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED7DE4E32B70D89E0016F523 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED1459382BA04D81009CEFAE /* RealmSwift in Frameworks */,
+				ED1459362BA04D81009CEFAE /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +78,7 @@
 				ED7DE4EA2B70D8A00016F523 /* Assets.xcassets */,
 				ED7DE4EC2B70D8A00016F523 /* LaunchScreen.storyboard */,
 				ED7DE4EF2B70D8A00016F523 /* Info.plist */,
+				ED1459392BA05736009CEFAE /* StorageManager.swift */,
 			);
 			path = MyPlaces;
 			sourceTree = "<group>";
@@ -92,6 +99,10 @@
 			dependencies = (
 			);
 			name = MyPlaces;
+			packageProductDependencies = (
+				ED1459352BA04D81009CEFAE /* Realm */,
+				ED1459372BA04D81009CEFAE /* RealmSwift */,
+			);
 			productName = MyPlaces;
 			productReference = ED7DE4DE2B70D89E0016F523 /* MyPlaces.app */;
 			productType = "com.apple.product-type.application";
@@ -104,7 +115,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					ED7DE4DD2B70D89E0016F523 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -120,6 +131,9 @@
 				Base,
 			);
 			mainGroup = ED7DE4D52B70D89E0016F523;
+			packageReferences = (
+				ED1459342BA04D81009CEFAE /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = ED7DE4DF2B70D89E0016F523 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -150,6 +164,7 @@
 				ED7DE4F62B70E57D0016F523 /* MainViewController.swift in Sources */,
 				EDAD475C2B91C1A700C92DEB /* NewPlaceViewController.swift in Sources */,
 				ED7DE4E22B70D89E0016F523 /* AppDelegate.swift in Sources */,
+				ED14593A2BA05736009CEFAE /* StorageManager.swift in Sources */,
 				EDEAEF2E2B8DE3290068CB5C /* PlaceModel.swift in Sources */,
 				EDEAEF2C2B8CBFB60068CB5C /* CustomTableViewCell.swift in Sources */,
 				ED7DE4E42B70D89E0016F523 /* SceneDelegate.swift in Sources */,
@@ -214,6 +229,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -274,6 +290,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -370,6 +387,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ED1459342BA04D81009CEFAE /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ED1459352BA04D81009CEFAE /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED1459342BA04D81009CEFAE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		ED1459372BA04D81009CEFAE /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED1459342BA04D81009CEFAE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ED7DE4D62B70D89E0016F523 /* Project object */;
 }
