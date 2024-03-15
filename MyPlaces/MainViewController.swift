@@ -18,6 +18,14 @@ class MainViewController: UITableViewController {
         places = realm.objects(Place.self)
     }
     
+//    MARK: - Tabel view delegate
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let place = places[indexPath.row]
+            StorageManager.deleteObject(place)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
