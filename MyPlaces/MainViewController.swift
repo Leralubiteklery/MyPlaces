@@ -8,9 +8,14 @@
 import UIKit
 import RealmSwift
 
-class MainViewController: UITableViewController {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet var segmentedControl: UISegmentedControl!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var reversedSortingButton: UIBarButtonItem!
     
     var places: Results<Place>!
+    var ascendingSorting = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +23,8 @@ class MainViewController: UITableViewController {
         places = realm.objects(Place.self)
     }
     
-//    MARK: - Tabel view delegate
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    //    MARK: - Tabel view delegate
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let place = places[indexPath.row]
             StorageManager.deleteObject(place)
@@ -28,11 +33,11 @@ class MainViewController: UITableViewController {
     }
     // MARK: - Table view data source
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         places.isEmpty ? 0 : places.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         
         let place = places[indexPath.row]
@@ -48,7 +53,7 @@ class MainViewController: UITableViewController {
         return cell
     }
     
-//    MARK: - Navigation
+    //    MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
@@ -63,5 +68,32 @@ class MainViewController: UITableViewController {
         newPlaceVC.savePlace()
         tableView.reloadData()
     }
+    
+    @IBAction func sortSelected(_ sender: UISegmentedControl) {
+        sorting()
+    }
+    
+    @IBAction func reversedSorting(_ sender: Any) {
+        ascendingSorting.toggle()
+        
+        if ascendingSorting {
+            reversedSortingButton.image = UIImage(imageLiteralResourceName: "AZ")
+        } else {
+            reversedSortingButton.image = UIImage(imageLiteralResourceName: "ZA")
+        }
+        
+        sorting()
+    }
+
+    private func sorting() {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            places = places.sorted(byKeyPath: "date", ascending: ascendingSorting)
+        } else {
+            places = places.sorted(byKeyPath: "name", ascending: ascendingSorting)
+        }
+        
+        tableView.reloadData()
+    }
+    
 }
 
