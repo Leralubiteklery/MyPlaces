@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,11 +32,25 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="UWC-sR-hHF">
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="250"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5W-qK-1mm">
+                                                    <rect key="frame" x="343" y="200" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="9K5-kU-B55"/>
+                                                        <constraint firstAttribute="width" constant="50" id="vtW-IW-34j"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="map"/>
+                                                    <connections>
+                                                        <segue destination="lYI-dF-G1z" kind="presentation" identifier="showMap" id="DQs-Oz-Miv"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemGray5Color"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="UWC-sR-hHF" secondAttribute="trailing" id="NmL-HD-hje"/>
+                                                <constraint firstAttribute="trailing" secondItem="H5W-qK-1mm" secondAttribute="trailing" id="PGz-04-5Aj"/>
                                                 <constraint firstItem="UWC-sR-hHF" firstAttribute="top" secondItem="yjC-RU-4Pn" secondAttribute="top" id="R2D-22-oqE"/>
+                                                <constraint firstAttribute="bottom" secondItem="H5W-qK-1mm" secondAttribute="bottom" id="ZFd-O3-NlY"/>
                                                 <constraint firstAttribute="bottom" secondItem="UWC-sR-hHF" secondAttribute="bottom" id="dBU-57-l2L"/>
                                                 <constraint firstItem="UWC-sR-hHF" firstAttribute="leading" secondItem="yjC-RU-4Pn" secondAttribute="leading" id="oYj-yo-7su"/>
                                             </constraints>
@@ -224,7 +239,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="92h-ri-NGD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="klw-f2-GKE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1997.709923664122" y="5.6338028169014089"/>
+            <point key="canvasLocation" x="1979" y="-6"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="oc8-Uc-lYD">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="lYI-dF-G1z" customClass="MapViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RDo-Vr-2qf">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="coV-h5-e7J">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSX-s6-hm1">
+                                <rect key="frame" x="323" y="40" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="DfZ-NB-QYw"/>
+                                    <constraint firstAttribute="height" constant="30" id="oaU-2m-sMR"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button" image="camcel"/>
+                                <connections>
+                                    <action selector="closeVC:" destination="lYI-dF-G1z" eventType="touchUpInside" id="Abj-Nt-KRt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KeW-rI-Zu9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KeW-rI-Zu9" firstAttribute="trailing" secondItem="bSX-s6-hm1" secondAttribute="trailing" constant="40" id="1Qk-uv-c9e"/>
+                            <constraint firstAttribute="trailing" secondItem="coV-h5-e7J" secondAttribute="trailing" id="9N8-F9-xBU"/>
+                            <constraint firstItem="coV-h5-e7J" firstAttribute="leading" secondItem="KeW-rI-Zu9" secondAttribute="leading" id="DWb-me-Wgl"/>
+                            <constraint firstAttribute="bottom" secondItem="coV-h5-e7J" secondAttribute="bottom" id="GEN-PV-P8b"/>
+                            <constraint firstItem="bSX-s6-hm1" firstAttribute="top" secondItem="KeW-rI-Zu9" secondAttribute="top" constant="40" id="SYQ-MO-Jya"/>
+                            <constraint firstItem="coV-h5-e7J" firstAttribute="top" secondItem="RDo-Vr-2qf" secondAttribute="top" id="UIX-Lt-HmA"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Vu-0r-xrZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2672.5190839694656" y="-6.3380281690140849"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cx1-Lk-DRt">
@@ -401,6 +457,12 @@
         <designable name="72q-De-ZnS">
             <size key="intrinsicContentSize" width="252" height="44"/>
         </designable>
+        <designable name="bzj-9x-glE">
+            <size key="intrinsicContentSize" width="200" height="49"/>
+        </designable>
+        <designable name="s1C-WK-hqc">
+            <size key="intrinsicContentSize" width="90" height="31"/>
+        </designable>
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="4Qn-Xs-1WI"/>
@@ -408,8 +470,10 @@
     <resources>
         <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="194.66667175292969" height="195.66667175292969"/>
+        <image name="camcel" width="128" height="128"/>
         <image name="emptyStar" width="255" height="256"/>
         <image name="filledStar" width="237.5" height="238"/>
+        <image name="map" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
