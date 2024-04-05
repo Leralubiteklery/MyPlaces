@@ -277,6 +277,9 @@
                             <constraint firstItem="coV-h5-e7J" firstAttribute="top" secondItem="RDo-Vr-2qf" secondAttribute="top" id="UIX-Lt-HmA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="coV-h5-e7J" id="ZsU-La-qbN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Vu-0r-xrZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
