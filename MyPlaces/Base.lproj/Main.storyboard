@@ -368,7 +368,7 @@
                                                     <rect key="frame" x="295" y="27" width="90" height="31"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="90" id="gFa-ll-Bvv"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="gFa-ll-Bvv"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="starSize">
