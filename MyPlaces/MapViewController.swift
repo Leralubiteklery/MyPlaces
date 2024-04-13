@@ -62,7 +62,13 @@ class MapViewController: UIViewController {
              setupLocationManager()
              checkLocationAuthorization()
         } else {
-//            show alert controller
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(
+                    title: "Location Services are disabled",
+                    message: "To enable it go to Settings -> Privacy -> Location Services and turn On"
+                )
+            }
+
         }
     }
     
@@ -76,10 +82,16 @@ class MapViewController: UIViewController {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
-//            show alert
+            showAlert(
+                title: "You location is not available",
+                message: "To give permission Go to: Setting -> MyPlaces -> Location"
+            )
             break
         case .denied:
-//            show alert
+            showAlert(
+                title: "You location is not available",
+                message: "To give permission Go to: Setting -> MyPlaces -> Location"
+            )
             break
         case .authorizedAlways:
             break
@@ -89,6 +101,15 @@ class MapViewController: UIViewController {
         @unknown default:
             print("New case is available")
         }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
 
