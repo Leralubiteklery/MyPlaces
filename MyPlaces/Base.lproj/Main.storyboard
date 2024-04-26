@@ -315,11 +315,25 @@
                                     <action selector="centerViewInUserLocation:" destination="lYI-dF-G1z" eventType="touchUpInside" id="wDm-kn-Ooe"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulI-7W-VXL">
+                                <rect key="frame" x="171.66666666666666" y="762" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YNy-No-20C"/>
+                                    <constraint firstAttribute="width" constant="50" id="gCF-Tc-8sT"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="GetDirection"/>
+                                <connections>
+                                    <action selector="goButtonPressed" destination="lYI-dF-G1z" eventType="touchUpInside" id="wzm-c6-BjE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KeW-rI-Zu9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KeW-rI-Zu9" firstAttribute="trailing" secondItem="bSX-s6-hm1" secondAttribute="trailing" constant="40" id="1Qk-uv-c9e"/>
+                            <constraint firstItem="KeW-rI-Zu9" firstAttribute="bottom" secondItem="ulI-7W-VXL" secondAttribute="bottom" constant="40" id="2IP-Wg-wEz"/>
+                            <constraint firstItem="ulI-7W-VXL" firstAttribute="centerX" secondItem="RDo-Vr-2qf" secondAttribute="centerX" id="8hq-m6-1wq"/>
                             <constraint firstItem="coV-h5-e7J" firstAttribute="top" secondItem="hMz-Qz-H3J" secondAttribute="bottom" constant="-202" id="8wH-Pa-CEF"/>
                             <constraint firstAttribute="trailing" secondItem="coV-h5-e7J" secondAttribute="trailing" id="9N8-F9-xBU"/>
                             <constraint firstItem="5EG-uC-iyJ" firstAttribute="centerY" secondItem="RDo-Vr-2qf" secondAttribute="centerY" constant="-20" id="A6b-fV-Hfg"/>
@@ -339,6 +353,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="hMz-Qz-H3J" id="hMM-aY-NBg"/>
                         <outlet property="doneButton" destination="FZq-sF-MQF" id="Htb-s0-3cq"/>
+                        <outlet property="goButton" destination="ulI-7W-VXL" id="NaX-AM-fUI"/>
                         <outlet property="mapPinImage" destination="5EG-uC-iyJ" id="thW-ai-6UN"/>
                         <outlet property="mapView" destination="coV-h5-e7J" id="ZsU-La-qbN"/>
                     </connections>
@@ -535,6 +550,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AZ" width="25" height="24"/>
+        <image name="GetDirection" width="50" height="50"/>
         <image name="Location" width="128" height="128"/>
         <image name="Photo" width="194.66667175292969" height="195.66667175292969"/>
         <image name="Pin" width="40" height="40"/>
@@ -547,7 +563,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
